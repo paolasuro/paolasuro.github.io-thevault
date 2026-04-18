@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vault — Mind Gym Orlando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#AAFF00;
+  --green-dim:#88CC00;
+  --black:#0C0C0C;
+  --off-black:#111111;
+  --surface:#1A1A1A;
+  --surface2:#222222;
+  --cream:#F0EDE6;
+  --text:#FFFFFF;
+  --text-dim:#888888;
+  --border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:rgba(12,12,12,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-logo-box{width:42px;height:42px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+.nav-logo-box svg{width:22px;height:22px;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-location{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--green);color:var(--black);border:none;padding:10px 22px;cursor:pointer;border-radius:4px;transition:background 0.2s;text-decoration:none;}
+.nav-cta:hover{background:var(--green-dim);}
+
+/* HERO */
+.hero{min-height:100vh;padding:140px 48px 100px;position:relative;overflow:hidden;background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to right, rgba(12,12,12,0.92) 50%, rgba(12,12,12,0.6) 100%), url('pods-hero.jpg') center/cover no-repeat;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:60px 60px;z-index:0;}
+.hero>div.reveal{position:relative;z-index:1;}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;opacity:0.4;}
+.hero-visual-inner{width:100%;max-width:480px;aspect-ratio:4/3;background:linear-gradient(135deg,#0a1a08 0%,#0d2a0a 50%,#071a05 100%);border:1px solid rgba(100,200,50,0.1);display:flex;align-items:flex-end;justify-content:center;padding:20px;overflow:hidden;position:relative;}
+.desk-glow{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:200px;height:120px;background:radial-gradient(ellipse, rgba(170,255,0,0.3) 0%, transparent 70%);}
+.desk-monitors{display:flex;gap:8px;align-items:flex-end;z-index:1;}
+.monitor{width:90px;height:60px;background:#050505;border:2px solid rgba(170,255,0,0.45);display:flex;align-items:center;justify-content:center;}
+.monitor-glow{width:70px;height:40px;background:rgba(0,180,50,0.18);}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.hero-eyebrow::before{content:'—';}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(90px,13vw,180px);line-height:0.87;letter-spacing:1px;margin-bottom:32px;}
+.hero-title .g{color:var(--green);}
+.hero-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--text-dim);max-width:420px;margin-bottom:40px;}
+.hero-btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.btn-green{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--green);color:var(--black);border:none;padding:14px 28px;cursor:pointer;border-radius:4px;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.btn-green:hover{background:var(--green-dim);}
+.btn-outline{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;cursor:pointer;border-radius:4px;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:var(--text);background:rgba(255,255,255,0.05);}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:28px;border-top:1px solid var(--border);}
+.h-stat-val{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--green);line-height:1;margin-bottom:4px;}
+.h-stat-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);}
+
+/* TICKER */
+.ticker{background:var(--surface);overflow:hidden;height:40px;display:flex;align-items:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.ticker-track{display:flex;animation:ticker 30s linear infinite;white-space:nowrap;}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);padding:0 32px;}
+.ticker-dot{color:var(--green);padding:0 8px;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ABOUT */
+.about{background:var(--black);padding:100px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:40px;display:flex;align-items:center;gap:8px;}
+.about-eyebrow::before{content:'/';color:var(--green);}
+.about-img{position:relative;background:#050f03;aspect-ratio:1/1;max-width:420px;overflow:hidden;}
+.about-img-inner{width:100%;height:100%;background:radial-gradient(ellipse 80% 60% at 50% 60%, rgba(0,200,30,0.45) 0%, rgba(0,80,10,0.2) 40%, transparent 70%);display:flex;align-items:center;justify-content:center;}
+.about-pod-visual{width:80%;aspect-ratio:1;border:2px solid rgba(0,200,40,0.3);display:flex;align-items:center;justify-content:center;position:relative;}
+.about-pod-inner{width:70%;aspect-ratio:1;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+.about-monitors{display:flex;gap:6px;}
+.about-mon{width:50px;height:32px;background:#030303;border:1.5px solid rgba(0,255,50,0.5);}
+.about-badge{display:none;}
+.about-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,6vw,80px);line-height:0.9;margin-bottom:28px;}
+.about-title .g{color:var(--green);}
+.about-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--text-dim);margin-bottom:14px;}
+.about-pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;}
+.pill{background:var(--surface);border:1px solid var(--border);padding:14px 16px;border-radius:6px;display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;color:var(--text-dim);}
+.pill-icon{width:18px;height:18px;stroke:var(--green);fill:none;stroke-width:1.5;flex-shrink:0;}
+
+/* SERVICES */
+.services{background:var(--cream);padding:100px 48px;}
+.services-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:12px;}
+.services-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,8vw,110px);line-height:0.88;color:#111;}
+.services-title .gray{color:#BBBBAA;}
+.services-header-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;}
+.services-tagline{font-size:15px;font-weight:300;line-height:1.7;color:#666;max-width:340px;text-align:right;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.svc-card{background:#fff;border:1px solid rgba(0,0,0,0.08);padding:28px 24px;border-radius:12px;transition:box-shadow 0.2s;}
+.svc-card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.08);}
+.svc-card.featured{background:#fff;}
+.svc-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;float:right;border:1px solid rgba(0,0,0,0.1);padding:3px 8px;border-radius:20px;}
+.svc-icon{width:32px;height:32px;stroke:#333;fill:none;stroke-width:1.5;margin:12px 0 16px;display:block;clear:both;}
+.svc-name{font-size:16px;font-weight:700;color:#111;margin-bottom:10px;}
+.svc-desc{font-size:13px;font-weight:300;line-height:1.7;color:#666;}
+
+/* PODS */
+.pods{background:var(--black);padding:100px 48px;}
+.pods-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:48px;}
+.pods-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.pods-eyebrow::before{content:'/';color:var(--green);}
+.pods-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,130px);line-height:0.87;}
+.pods-title .g{color:var(--green);}
+.pods-subtitle{font-size:15px;font-weight:300;line-height:1.8;color:var(--text-dim);align-self:flex-end;padding-top:60px;}
+.pods-tabs{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;}
+.pod-tab{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border);border-radius:4px;cursor:pointer;background:transparent;color:var(--text-dim);transition:all 0.2s;}
+.pod-tab.active{background:var(--green);color:var(--black);border-color:var(--green);}
+.pod-tab:hover:not(.active){border-color:var(--text-dim);color:var(--text);}
+.pod-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.pod-img-wrap{position:relative;}
+.pod-img{aspect-ratio:4/3;background:#030d02;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+.pod-img-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 60%, rgba(0,200,30,0.4) 0%, rgba(0,100,15,0.15) 50%, transparent 75%);}
+.pod-img-desk{position:relative;z-index:1;width:85%;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.pod-img-mons{display:flex;gap:6px;}
+.pod-img-mon{width:80px;height:52px;background:#020202;border:2px solid rgba(0,255,40,0.55);}
+.pod-img-label{position:absolute;bottom:16px;left:16px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(170,255,0,0.5);}
+.pod-flag{position:absolute;top:16px;left:16px;background:var(--green);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:4px;}
+.pod-info-name{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;margin-bottom:4px;}
+.pod-info-sub{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:20px;}
+.pod-info-desc{font-size:15px;font-weight:300;line-height:1.8;color:var(--text-dim);margin-bottom:28px;}
+.pod-specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px;}
+.pod-spec{background:var(--surface);border:1px solid var(--border);padding:12px 16px;border-radius:6px;display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--text-dim);}
+.spec-icon{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.5;flex-shrink:0;}
+
+/* PRICING */
+.pricing{background:var(--cream);padding:100px 48px;}
+.pricing-header{text-align:center;margin-bottom:48px;}
+.pricing-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:12px;}
+.pricing-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,100px);color:#111;line-height:0.9;margin-bottom:12px;}
+.pricing-sub{font-size:15px;font-weight:300;color:#666;line-height:1.6;max-width:420px;margin:0 auto 28px;}
+.toggle-wrap{display:flex;justify-content:center;margin-bottom:40px;}
+.toggle{background:#E0DDD6;border-radius:30px;padding:4px;display:flex;}
+.tog-btn{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 22px;border:none;border-radius:26px;cursor:pointer;background:transparent;color:#888;transition:all 0.2s;}
+.tog-btn.active{background:#111;color:#fff;}
+.tog-save{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--green);color:#111;padding:8px 14px;border-radius:26px;border:none;cursor:pointer;}
+.tog-save.active{background:#111;color:#fff;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto;}
+.pc{background:#fff;border:1px solid rgba(0,0,0,0.1);padding:36px 28px;border-radius:12px;}
+.pc.featured{background:#111;color:#fff;border-color:#111;}
+.pc.elite{background:#111;color:#fff;border-color:#111;}
+.pc-badge{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:#111;color:#fff;padding:5px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.pc.elite .pc-badge{background:var(--green);color:#111;}
+.pc-tier{font-size:18px;font-weight:700;color:inherit;margin-bottom:4px;}
+.pc-target{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:16px;}
+.pc.elite .pc-target{color:var(--green);}
+.pc-desc{font-size:13px;font-weight:300;line-height:1.7;color:#888;margin-bottom:24px;}
+.pc.featured .pc-desc,.pc.elite .pc-desc{color:rgba(255,255,255,0.5);}
+.pc-label{font-size:22px;font-weight:700;color:inherit;margin-bottom:4px;}
+.pc-price{font-size:48px;font-weight:700;line-height:1;margin-bottom:4px;color:inherit;}
+.pc-price sup{font-size:20px;font-weight:400;vertical-align:super;}
+.pc-price small{font-size:16px;font-weight:300;}
+.pc-period{font-size:13px;color:#888;margin-bottom:24px;min-height:20px;}
+.pc.featured .pc-period,.pc.elite .pc-period{color:rgba(255,255,255,0.4);}
+.pc-cta{display:block;text-align:center;width:100%;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px;border-radius:6px;cursor:pointer;text-decoration:none;margin-bottom:24px;transition:all 0.2s;border:none;}
+.pc .pc-cta{background:#111;color:#fff;}
+.pc .pc-cta:hover{background:#333;}
+.pc.featured .pc-cta{background:#fff;color:#111;}
+.pc.featured .pc-cta:hover{background:#eee;}
+.pc.elite .pc-cta{background:var(--green);color:#111;}
+.pc.elite .pc-cta:hover{background:var(--green-dim);}
+.pc-feats{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.pc-feats li{font-size:13px;font-weight:300;color:#555;display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+.pc.featured .pc-feats li,.pc.elite .pc-feats li{color:rgba(255,255,255,0.6);}
+.pc-feats li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
+.pricing-note{text-align:center;margin-top:32px;font-size:12px;font-weight:300;color:#999;}
+
+/* LOCATION */
+.location{background:var(--black);padding:100px 48px;}
+.loc-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.loc-eyebrow::before{content:'/';color:var(--green);}
+.loc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,120px);line-height:0.88;}
+.loc-title .g{color:var(--green);}
+.loc-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:40px;}
+.loc-tagline{font-size:14px;font-weight:300;color:var(--text-dim);text-align:right;}
+.loc-directions{color:var(--green);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-top:8px;text-decoration:none;}
+.loc-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+.loc-map{aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border);}
+.loc-map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(30%) contrast(1.05);}
+.loc-info{display:flex;flex-direction:column;gap:16px;}
+.loc-card{background:var(--surface);border:1px solid var(--border);padding:20px;border-radius:8px;}
+.loc-card-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.loc-card-label svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2;}
+.loc-addr{font-size:15px;font-weight:600;line-height:1.6;}
+.loc-hours-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);}
+.loc-hours-row:last-child{border-bottom:none;}
+.loc-hours-type{font-size:13px;font-weight:300;color:var(--text-dim);}
+.loc-hours-val{font-size:13px;font-weight:600;}
+.loc-amenity{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:300;color:var(--text-dim);padding:4px 0;}
+.loc-amenity svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.5;flex-shrink:0;}
+
+/* CONTACT */
+.contact{background:var(--off-black);padding:80px 48px 100px;}
+.contact-header{text-align:center;margin-bottom:56px;}
+.contact-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,100px);line-height:0.9;}
+.contact-title .g{color:var(--green);}
+.contact-desc{font-size:15px;font-weight:300;color:var(--text-dim);line-height:1.7;max-width:420px;margin:12px auto 0;}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto;}
+.contact-left{display:flex;flex-direction:column;gap:16px;}
+.cbox{background:var(--surface);border:1px solid var(--border);padding:24px;border-radius:10px;}
+.cbox-title{font-size:16px;font-weight:700;margin-bottom:20px;}
+.cinfo-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);}
+.cinfo-row:last-child{border-bottom:none;}
+.cinfo-icon{width:32px;height:32px;background:rgba(170,255,0,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cinfo-icon svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:1.5;}
+.cinfo-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px;}
+.cinfo-val{font-size:14px;font-weight:400;}
+.social-row{display:flex;gap:12px;margin-top:8px;}
+.soc-btn{width:36px;height:36px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.2s;}
+.soc-btn:hover{border-color:var(--green);}
+.soc-btn svg{width:14px;height:14px;stroke:var(--text-dim);fill:none;stroke-width:1.5;}
+.contact-img{aspect-ratio:3/2;overflow:hidden;border-radius:8px;background:#0a1208;display:flex;align-items:center;justify-content:center;}
+.contact-img-inner{width:90%;height:90%;background:linear-gradient(180deg,rgba(20,40,15,0.8) 0%,rgba(5,15,5,0.9) 100%);border:1px solid rgba(100,200,50,0.08);position:relative;overflow:hidden;}
+.contact-img-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:80px;background:radial-gradient(ellipse,rgba(0,200,30,0.2) 0%,transparent 70%);}
+.cform{background:var(--surface);border:1px solid var(--border);padding:28px;border-radius:10px;}
+.cform-title{font-size:16px;font-weight:700;margin-bottom:24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.form-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);}
+.form-input,.form-select,.form-textarea{background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;font-weight:300;padding:12px 14px;border-radius:6px;width:100%;transition:border-color 0.2s;outline:none;}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-dim);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(170,255,0,0.5);}
+.form-select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.form-textarea{resize:vertical;min-height:110px;}
+.char-count{font-size:11px;color:var(--text-dim);text-align:right;margin-top:4px;}
+.form-submit{width:100%;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--green);color:var(--black);border:none;padding:16px;border-radius:6px;cursor:pointer;transition:background 0.2s;margin-top:4px;}
+.form-submit:hover{background:var(--green-dim);}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;}
+.foot-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:var(--text-dim);}
+.foot-copy{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);}
+.foot-links{display:flex;gap:24px;}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.2s;}
+.foot-links a:hover{color:var(--green);}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pods">Pods</a></li>
+    <li><a href="#pricing">Membership</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-location">Orlando, FL</span>
+    <a href="#pricing" class="nav-cta">Get Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="reveal">
+    <p class="hero-eyebrow">Orlando, Florida</p>
+    <h1 class="hero-title">THE<br><span class="g">MIND</span><br>GYM.</h1>
+    <p class="hero-body">A fortified study sanctuary engineered for students and remote professionals who demand a distraction-free environment. Soundproof pods. Pro-grade hardware. 24/7 access.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn-green">Enter The VAULT →</a>
+      <a href="#pods" class="btn-outline">Explore Pods</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="h-stat-val">24/7</div><div class="h-stat-label">Always Open</div></div>
+      <div><div class="h-stat-val">4K</div><div class="h-stat-label">Dual Monitors</div></div>
+      <div><div class="h-stat-val">1Gbps</div><div class="h-stat-label">Fiber Internet</div></div>
+      <div><div class="h-stat-val">100%</div><div class="h-stat-label">Soundproofed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Deep Work</span><span class="ticker-dot">✦</span><span class="ticker-item">Total Focus</span><span class="ticker-dot">✦</span><span class="ticker-item">Zero Noise</span><span class="ticker-dot">✦</span><span class="ticker-item">Flow State</span><span class="ticker-dot">✦</span><span class="ticker-item">Elite Tools</span><span class="ticker-dot">✦</span><span class="ticker-item">Deep Work</span><span class="ticker-dot">✦</span><span class="ticker-item">Total Focus</span><span class="ticker-dot">✦</span><span class="ticker-item">Zero Noise</span><span class="ticker-dot">✦</span><span class="ticker-item">Flow State</span><span class="ticker-dot">✦</span><span class="ticker-item">Elite Tools</span><span class="ticker-dot">✦</span><span class="ticker-item">Deep Work</span><span class="ticker-dot">✦</span><span class="ticker-item">Total Focus</span><span class="ticker-dot">✦</span><span class="ticker-item">Zero Noise</span><span class="ticker-dot">✦</span><span class="ticker-item">Flow State</span><span class="ticker-dot">✦</span><span class="ticker-item">Elite Tools</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="reveal">
+    <p class="about-eyebrow">Founded at UCF</p>
+    <div style="margin-bottom:24px;overflow:hidden;aspect-ratio:4/3;">
+      <img src="pod-large.webp" alt="The Vault Pod" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.9);">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="border-top:2px solid var(--green);padding-top:16px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--text);line-height:1;">23<span style="font-size:24px">min</span></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-top:4px;">Lost per interruption</div>
+      </div>
+      <div style="border-top:2px solid var(--green);padding-top:16px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--text);line-height:1;">80<span style="font-size:24px">%</span></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-top:4px;">Results from 20% effort</div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal">
+    <h2 class="about-title">WE RECLAIM<br><span class="g">PRODUCTIVITY.</span></h2>
+    <p class="about-body">The VAULT was born from a simple frustration: the best work demands the best environment, but most people don't have access to one. Crowded cafes, noisy dorms, and underpowered laptops are the enemy of deep work.</p>
+    <p class="about-body">Founded by business strategists at UCF, we engineered a solution — a fortified sanctuary where every variable is controlled. Acoustics. Hardware. Connectivity. Atmosphere. We call it the Mind Gym, because peak performance is a practice.</p>
+    <div class="about-pills">
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Distraction-Free Zones</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Pro-Grade Hardware</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24/7 Access</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Flow State Design</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <p class="services-eyebrow">What We Offer</p>
+    <div class="services-header-row">
+      <h2 class="services-title">ENGINEERED<br><span class="gray">FOR FLOW.</span></h2>
+      <p class="services-tagline">Every service at The VAULT is designed with one goal: to eliminate friction and maximize your output.</p>
+    </div>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc-card">
+      <span class="svc-tag">Private</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="svc-name">Soundproof Sanctuary Pods</div>
+      <p class="svc-desc">Acoustically sealed private workstations engineered to eliminate all external noise. Your personal fortress of focus, equipped with dual 4K monitors and enterprise fiber.</p>
+    </div>
+    <div class="svc-card featured">
+      <span class="svc-tag">High-Performance</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <div class="svc-name">Digital Power Stations</div>
+      <p class="svc-desc">High-performance open workstations with professional-grade hardware. Ideal for intensive coding sessions, video editing, data analysis, and creative production.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-tag">Always-On</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+      <div class="svc-name">Enterprise Fiber Internet</div>
+      <p class="svc-desc">1Gbps symmetrical fiber internet with dedicated bandwidth per pod. No throttling, no sharing, no lag. The connection your work deserves.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-tag">24/7</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="svc-name">24/7 Gym-Style Access</div>
+      <p class="svc-desc">Keycard access around the clock, every day of the year. No appointments, no waiting. Show up when your peak hours hit — 2AM or 2PM.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-tag">Full-Service</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <div class="svc-name">Business Resource Suite</div>
+      <p class="svc-desc">High-speed printing, scanning, and document services. Conference room access for team sessions and client meetings. Everything a professional needs.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-tag">On-Site</span>
+      <svg class="svc-icon" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      <div class="svc-name">Focus Fuel Station</div>
+      <p class="svc-desc">Curated selection of premium coffee, energy drinks, and brain-boosting snacks. Fuel your sessions without ever breaking your flow state.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PODS -->
+<section class="pods" id="pods">
+  <div class="pods-header reveal">
+    <div>
+      <p class="pods-eyebrow">Our Workspaces</p>
+      <h2 class="pods-title">THE<br><span class="g">PODS.</span></h2>
+    </div>
+    <p class="pods-subtitle">Three distinct workspace environments, each engineered for a specific mode of high-performance work.</p>
+  </div>
+  <div class="pods-tabs reveal">
+    <button class="pod-tab active" onclick="switchPod(0,this)">Sanctuary Pod</button>
+    <button class="pod-tab" onclick="switchPod(1,this)">Digital Power Station</button>
+    <button class="pod-tab" onclick="switchPod(2,this)">Focus Booth</button>
+  </div>
+  <div class="pod-layout reveal">
+    <div>
+      <div style="border-left:3px solid var(--green);padding-left:24px;margin-bottom:32px;">
+        <div class="pod-flag" style="position:static;display:inline-block;margin-bottom:16px;" id="pod-flag">Flagship</div>
+        <div class="pod-info-name" id="pod-name">Sanctuary Pod</div>
+        <div class="pod-info-sub" id="pod-sub">Total Isolation. Total Focus.</div>
+      </div>
+      <p class="pod-info-desc" id="pod-desc">Our flagship fully-enclosed soundproof pod. Acoustically sealed with premium panels, climate-controlled, and equipped with the most powerful hardware in the facility. For those who demand absolute silence.</p>
+      <div class="pod-specs" id="pod-specs">
+        <div class="pod-spec"><svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Full Soundproofing</div>
+        <div class="pod-spec"><svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>Dual 4K Monitors</div>
+        <div class="pod-spec"><svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><circle cx="12" cy="20" r="1"/></svg>1Gbps Dedicated Fiber</div>
+        <div class="pod-spec"><svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Climate Control</div>
+      </div>
+      <a href="#pricing" class="btn-green">Book This Pod →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div style="overflow:hidden;aspect-ratio:4/3;background:#0a0a0a;">
+        <img id="pod-img" src="pod-small.webp" alt="Pod" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.3s;">
+      </div>
+      <div id="pod-why" style="display:flex;flex-direction:column;gap:0;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header reveal">
+    <p class="pricing-eyebrow">Membership Plans</p>
+    <h2 class="pricing-title">JOIN THE VAULT.</h2>
+    <p class="pricing-sub">Flexible plans. 24/7 access. No distractions. Choose the level of focus you need.</p>
+    <div class="toggle-wrap">
+      <div class="toggle">
+        <button class="tog-btn active" id="tog-m" onclick="setToggle('monthly')">Monthly</button>
+        <button class="tog-save" id="tog-a" onclick="setToggle('annual')">Annual &nbsp; Save 20%</button>
+      </div>
+    </div>
+  </div>
+  <div class="pricing-grid reveal">
+    <div class="pc">
+      <div class="pc-tier">Day Pass</div>
+      <div class="pc-target">Occasional Users &amp; Visitors</div>
+      <p class="pc-desc">Best for occasional users or visitors needing a reset from a loud environment.</p>
+      <div class="pc-label">Single Session</div>
+      <div class="pc-price">$10</div>
+      <div class="pc-period">&nbsp;</div>
+      <a href="#contact" class="pc-cta">Get Day Pass</a>
+      <ul class="pc-feats">
+        <li>Unlimited 24/7 Pod Access (1 calendar day)</li>
+        <li>Industrial Soundproofing</li>
+        <li>Bio-Feedback Lighting (Focus Blue / Zen Amber)</li>
+        <li>High-Speed Wi-Fi</li>
+        <li>Mandatory Phone Locker (secure + charging)</li>
+      </ul>
+    </div>
+    <div class="pc featured">
+      <div class="pc-badge">Most Popular</div>
+      <div class="pc-tier">Basic Vault</div>
+      <div class="pc-target">Students &amp; Laptop Professionals</div>
+      <p class="pc-desc">Best for students and professionals who have their own laptop but need a consistent, quiet environment.</p>
+      <div class="pc-price" id="bv-price"><sup>$</sup>29 <small>per month</small></div>
+      <div class="pc-period" id="bv-period">&nbsp;</div>
+      <a href="#contact" class="pc-cta">Join Basic Vault</a>
+      <ul class="pc-feats">
+        <li>All Day Pass Features</li>
+        <li>24/7 Unlimited Monthly Access</li>
+        <li>Recurring Savings (less than $1/day)</li>
+        <li>Ergonomic High-Performance Seating</li>
+        <li>Unlimited Usage — gym-style focus training</li>
+      </ul>
+    </div>
+    <div class="pc elite">
+      <div class="pc-badge">Elite</div>
+      <div class="pc-tier">Power Vault</div>
+      <div class="pc-target">Analysts, Devs &amp; Remote Workers</div>
+      <p class="pc-desc">Best for data analysts, developers, and remote workers who need professional-grade hardware.</p>
+      <div class="pc-price" id="pv-price"><sup>$</sup>49 <small>per month</small></div>
+      <div class="pc-period" id="pv-period">&nbsp;</div>
+      <a href="#contact" class="pc-cta">Enter The VAULT</a>
+      <ul class="pc-feats">
+        <li>All Basic Vault Features</li>
+        <li>Dual 27" 4K Monitors</li>
+        <li>Enterprise Fiber — Hardwired Gigabit</li>
+        <li>Adjustable Standing Desks</li>
+        <li>Priority Booking for Peak Periods</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pricing-note">All plans include 24/7 access to soundproof Sanctuary Pods. No long-term contracts required.</p>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="loc-header reveal">
+    <div>
+      <p class="loc-eyebrow">Find Us</p>
+      <h2 class="loc-title">ORLANDO,<br><span class="g">FLORIDA.</span></h2>
+    </div>
+    <div>
+      <p class="loc-tagline">Strategically located near UCF and downtown Orlando</p>
+      <a href="https://maps.google.com/?q=Orlando,FL" target="_blank" class="loc-directions">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Get Directions
+      </a>
+    </div>
+  </div>
+  <div class="loc-layout reveal">
+    <div class="loc-map">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-81.4200%2C28.5400%2C-81.1800%2C28.6400&layer=mapnik&marker=28.5923%2C-81.3009" width="100%" height="420" style="border:0;display:block;filter:grayscale(40%) contrast(1.05);" loading="lazy" title="The Vault location — Orlando, FL"></iframe>
+    </div>
+    <div class="loc-info">
+      <div class="loc-card">
+        <div class="loc-card-label"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Address</div>
+        <div class="loc-addr">Near UCF Campus<br>Orlando, Florida 32816<br>United States</div>
+      </div>
+      <div class="loc-card">
+        <div class="loc-card-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Access Hours</div>
+        <div class="loc-hours-row"><span class="loc-hours-type">Vault Members</span><span class="loc-hours-val">24/7 — Always Open</span></div>
+        <div class="loc-hours-row"><span class="loc-hours-type">Hustler Plan</span><span class="loc-hours-val">Mon–Fri: 6AM – 11PM</span></div>
+        <div class="loc-hours-row"><span class="loc-hours-type">Day Pass</span><span class="loc-hours-val">Mon–Sun: 8AM – 10PM</span></div>
+        <div class="loc-hours-row"><span class="loc-hours-type">Staff On-Site</span><span class="loc-hours-val">Mon–Fri: 9AM – 6PM</span></div>
+      </div>
+      <div class="loc-card">
+        <div class="loc-card-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Getting Here</div>
+        <div class="loc-amenity"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Free Parking Available</div>
+        <div class="loc-amenity"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>LYNX Bus Stop Nearby</div>
+        <div class="loc-amenity"><svg viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><path d="M15 6h4l2 5-4 1.5"/><path d="M5 6h10l1 9H5z"/></svg>Bike Rack On-Site</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-header reveal">
+    <h2 class="contact-title">READY TO<br><span class="g">ENTER?</span></h2>
+    <p class="contact-desc">Have questions about membership, pods, or availability? We're here to help you find your perfect focus environment.</p>
+  </div>
+  <div class="contact-layout reveal">
+    <div class="contact-left">
+      <div class="cbox">
+        <div class="cbox-title">Contact Information</div>
+        <div class="cinfo-row">
+          <div class="cinfo-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="cinfo-label">Location</div><div class="cinfo-val">Near UCF Campus, Orlando, FL 32816</div></div>
+        </div>
+        <div class="cinfo-row">
+          <div class="cinfo-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="cinfo-label">Email</div><div class="cinfo-val">hello@thevaultorlando.com</div></div>
+        </div>
+        <div class="cinfo-row">
+          <div class="cinfo-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="cinfo-label">Phone</div><div class="cinfo-val">(407) 555-VAULT</div></div>
+        </div>
+        <div class="cinfo-row">
+          <div class="cinfo-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="cinfo-label">Staff Hours</div><div class="cinfo-val">Mon–Fri: 9AM – 6PM EST</div></div>
+        </div>
+      </div>
+      <div class="cbox">
+        <div class="cinfo-label" style="margin-bottom:14px;">Follow The Vault</div>
+        <div class="social-row">
+          <div class="soc-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div class="soc-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+          <div class="soc-btn"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></div>
+          <div class="soc-btn"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        </div>
+      </div>
+      <div class="contact-img">
+        <div class="contact-img-inner"><div class="contact-img-glow"></div></div>
+      </div>
+    </div>
+    <div class="cform">
+      <div class="cform-title">Send Us a Message</div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="Marcus"></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Johnson"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="marcus@example.com"></div>
+      <div class="form-group">
+        <label class="form-label">Inquiry Type</label>
+        <select class="form-select form-input"><option value="">Select an option</option><option>Membership Info</option><option>Pod Availability</option><option>Pricing</option><option>Partnership</option><option>Other</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message (0/500)</label>
+        <textarea class="form-textarea" placeholder="Tell us what you're looking for..." maxlength="500" oninput="document.getElementById('cc').textContent=this.value.length+' / 500'"></textarea>
+        <div class="char-count" id="cc">0 / 500</div>
+      </div>
+      <button class="form-submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">THE VAULT</div>
+  <div class="foot-links">
+    <a href="#about">About</a><a href="#services">Services</a><a href="#pods">Pods</a><a href="#pricing">Membership</a><a href="#location">Location</a><a href="#contact">Contact</a>
+  </div>
+  <div class="foot-copy">© 2025 The Vault. Orlando, FL.</div>
+</footer>
+
+<script>
+const pods=[
+  {name:"Sanctuary Pod",sub:"Total Isolation. Total Focus.",desc:"Our flagship fully-enclosed soundproof pod. Acoustically sealed with premium panels, climate-controlled, and equipped with the most powerful hardware in the facility. For those who demand absolute silence.",flag:"Flagship",img:"pod-small.webp",
+  specs:[{i:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',t:"Full Soundproofing"},{i:'<rect x="2" y="3" width="20" height="14" rx="2"/>',t:"Dual 4K Monitors"},{i:'<path d="M5 12.55a11 11 0 0 1 14.08 0"/><circle cx="12" cy="20" r="1"/>',t:"1Gbps Dedicated Fiber"},{i:'<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>',t:"Climate Control"}],
+  why:[{h:"Acoustic Engineering",b:"Industrial-grade soundproof walls and integrated white-noise systems create a complete acoustic shield. Zero bleed-in from the outside world."},{h:"Dynamic Lighting Control",b:"Switch to cool blue for peak alertness or warm amber to reduce eye strain. Total sensory control engineered around your session type."},{h:"Ergonomic Hardware",b:"Adjustable standing desks, high-end task chairs, and dual 4K monitors. Physical discomfort never breaks your concentration here."}]},
+  {name:"Digital Power Station",sub:"Professional-Grade. Maximum Output.",desc:"High-performance open workstations with professional-grade hardware. Ideal for intensive coding sessions, video editing, data analysis, and creative production at peak efficiency.",flag:"Power",img:"pod-large.webp",
+  specs:[{i:'<rect x="2" y="3" width="20" height="14" rx="2"/>',t:'Dual 27" 4K Displays'},{i:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',t:"Pro Software Suite"},{i:'<path d="M5 12.55a11 11 0 0 1 14.08 0"/><circle cx="12" cy="20" r="1"/>',t:"Hardwired Gigabit"},{i:'<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',t:"Standing Desk"}],
+  why:[{h:"Dual 4K Display Setup",b:"Two 27-inch 4K monitors give you the screen real estate to run multiple windows, reference materials, and creative tools simultaneously."},{h:"Pro Software Access",b:"Pre-loaded with industry-standard tools for data analysis, design, and development. Plug in and get to work immediately."},{h:"Hardwired Gigabit",b:"Dedicated wired ethernet per station. No Wi-Fi congestion, no packet loss. The most stable connection for heavy uploads, video calls, and cloud work."}]},
+  {name:"Focus Booth",sub:"Compact. Quiet. Efficient.",desc:"A streamlined open-top booth with acoustic panels. Ideal for students and writers who need solid focus without full enclosure — move fast, work hard.",flag:"Compact",img:"pods-hero.jpg",
+  specs:[{i:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',t:"Acoustic Panels"},{i:'<rect x="2" y="3" width="20" height="14" rx="2"/>',t:"Single Monitor"},{i:'<path d="M5 12.55a11 11 0 0 1 14.08 0"/><circle cx="12" cy="20" r="1"/>',t:"1Gbps Wi-Fi"},{i:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',t:"Ergonomic Chair"}],
+  why:[{h:"Low-Friction Entry",b:"No reservation required. Walk in, claim a booth, and get to work. Built for students who move fast between classes and sessions."},{h:"Acoustic Panel Walls",b:"Semi-enclosed with sound-dampening panels on three sides. Enough isolation to cut ambient noise without full enclosure."},{h:"Bring Your Own Setup",b:"Plug your laptop into the external monitor and full-speed Wi-Fi. Your machine, our environment — best of both worlds."}]}
+];
+function switchPod(i,btn){
+  document.querySelectorAll('.pod-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const p=pods[i];
+  document.getElementById('pod-name').textContent=p.name;
+  document.getElementById('pod-sub').textContent=p.sub;
+  document.getElementById('pod-desc').textContent=p.desc;
+  document.getElementById('pod-flag').textContent=p.flag;
+  document.getElementById('pod-img').src=p.img;
+  document.getElementById('pod-specs').innerHTML=p.specs.map(s=>`<div class="pod-spec"><svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5">${s.i}</svg>${s.t}</div>`).join('');
+  const lastIdx=p.why.length-1;
+  document.getElementById('pod-why').innerHTML=p.why.map((w,idx)=>`<div style="padding:16px 0;${idx<lastIdx?'border-bottom:1px solid var(--border);':''}"><div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:5px;">${w.h}</div><p style="font-size:13px;font-weight:300;line-height:1.6;color:var(--text-dim);">${w.b}</p></div>`).join('');
+}
+switchPod(0, document.querySelector('.pod-tab'));
+function setToggle(m){
+  const monthly=m==='monthly';
+  document.getElementById('tog-m').classList.toggle('active',monthly);
+  document.getElementById('tog-a').classList.toggle('active',!monthly);
+  document.getElementById('bv-price').innerHTML=monthly?'<sup>$</sup>29 <small>per month</small>':'<sup>$</sup>23 <small>per month</small>';
+  document.getElementById('pv-price').innerHTML=monthly?'<sup>$</sup>49 <small>per month</small>':'<sup>$</sup>39 <small>per month</small>';
+  document.getElementById('bv-period').textContent=monthly?'':' billed annually ($276/yr)';
+  document.getElementById('pv-period').textContent=monthly?'':' billed annually ($468/yr)';
+}
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
